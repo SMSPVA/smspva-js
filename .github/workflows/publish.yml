@@ -70,4 +70,4 @@ jobs:
           name: npm-package
           path: artifacts/
       - name: Publish checked tarball
-        run: npm publish artifacts/*.tgz --access public --tag alpha --ignore-scripts
+        run: npm publish ./artifacts/*.tgz --access public --tag alpha --ignore-scripts
