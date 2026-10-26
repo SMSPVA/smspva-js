@@ -2,7 +2,15 @@
 
 [![CI](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)
 
-Node.js 22.16+, ESM and CommonJS, with TypeScript declarations. Covers all 56 methods: Activation V2 (20), Rental (22) and Private Email (14). Alternative API is excluded. This is an alpha release. npm publication is pending.
+Node.js 22.16+, ESM and CommonJS, with TypeScript declarations. Covers all 56 methods: Activation V2 (20), Rental (22) and Private Email (14). Alternative API is excluded. This is an alpha release. Use the explicit version or the `alpha` tag when installing.
+
+## Installation
+
+```sh
+npm install smspva-sdk@alpha
+# Or pin the first alpha:
+npm install smspva-sdk@0.1.0-alpha.1
+```
 
 Build and install from source:
 
