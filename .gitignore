@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+dist/
+build/
+.checks/
+*.tgz
+*.egg-info/
+__pycache__/
+.mypy_cache/
+.env
+.env.*

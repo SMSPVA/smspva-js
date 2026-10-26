@@ -1,0 +1,48 @@
+{
+  "name": "smspva-sdk",
+  "version": "0.1.0-alpha.1",
+  "description": "SMSPVA Activation V2, Rental and Private Email clients for Node.js and TypeScript",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.16"
+  },
+  "main": "./dist/cjs/index.cjs",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "METHODS.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepack": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:types": "tsc --noEmit --strict --module NodeNext --target ES2022 --skipLibCheck test/consumer.mts test/consumer.cts"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMSPVA/smspva-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SMSPVA/smspva-js/issues"
+  },
+  "homepage": "https://github.com/SMSPVA/smspva-js#readme"
+}
