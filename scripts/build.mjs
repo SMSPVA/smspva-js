@@ -6,9 +6,7 @@ import { execFileSync } from 'node:child_process';
 
 const root=new URL('../',import.meta.url), directory=fileURLToPath(root);
 const require=createRequire(import.meta.url);
-let compiler;
-try { compiler=require.resolve('typescript/bin/tsc'); }
-catch { compiler=fileURLToPath(new URL('../../docs/node_modules/typescript/bin/tsc',root)); }
+const compiler=resolve(require.resolve('typescript/package.json'), '../bin/tsc');
 // Clean only these verified build directories inside this package.
 for(const name of ['dist','.checks/cjs']) {
   const path=resolve(directory,name), rel=relative(directory,path);
