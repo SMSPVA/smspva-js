@@ -1,7 +1,7 @@
 {
   "name": "smspva-sdk",
-  "version": "0.1.0-alpha.1",
-  "description": "SMSPVA Activation V2, Rental and Private Email clients for Node.js and TypeScript",
+  "version": "0.1.0-alpha.2",
+  "description": "Official JavaScript and TypeScript SDK for SMSPVA SMS activation, phone number rental and private email APIs",
   "license": "MIT",
   "type": "module",
   "engines": {
@@ -43,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/SMSPVA/smspva-js/issues"
   },
-  "homepage": "https://github.com/SMSPVA/smspva-js#readme",
+  "homepage": "https://smspva.com/",
   "publishConfig": {
     "access": "public",
     "tag": "alpha"
@@ -51,7 +51,9 @@
   "keywords": [
     "smspva",
     "sms",
+    "verification",
     "activation",
+    "phone-number",
     "rental",
     "email",
     "typescript",

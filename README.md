@@ -1,27 +1,36 @@
-# SMSPVA JavaScript / TypeScript SDK
+# SMSPVA JavaScript and TypeScript SDK
 
-[![CI](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)
+[![CI](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml/badge.svg)](https://github.com/SMSPVA/smspva-js/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/SMSPVA/smspva-js/blob/main/LICENSE) ![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)
 
-Node.js 22.16+, ESM and CommonJS, with TypeScript declarations. Covers all 56 methods: Activation V2 (20), Rental (22) and Private Email (14). Alternative API is excluded. This is an alpha release. Use the explicit version or the `alpha` tag when installing.
+Official JavaScript and TypeScript client for [SMSPVA](https://smspva.com/), a service for receiving verification SMS, renting phone numbers and renting private email addresses. Use the asynchronous client in Node.js applications, with ESM and CommonJS builds and TypeScript declarations included.
+
+Requires Node.js 22.16 or later. Uses native fetch and has no runtime dependencies. This package is an alpha release.
 
 ## Installation
 
 ```sh
 npm install smspva-sdk@alpha
-# Or pin the first alpha:
-npm install smspva-sdk@0.1.0-alpha.1
+# Or pin this release:
+npm install smspva-sdk@0.1.0-alpha.2
 ```
 
-Build and install from source:
+## API coverage
 
-```sh
-git clone https://github.com/SMSPVA/smspva-js.git
-cd smspva-js
-npm ci
-npm run build
-# In the application that will use the SDK:
-npm install /absolute/path/to/smspva-js
-```
+The SDK provides 56 methods across three APIs:
+
+| API | Methods | Use it to |
+| --- | --- | --- |
+| Activation V2 | 20 | Request a number, check availability and receive verification SMS. |
+| Rental | 22 | Manage [phone number rentals](https://smspva.com/rent) and retrieve messages for existing orders. |
+| Private Email | 14 | Check providers and services, manage [private email rentals](https://smspva.com/rent-mail.html), and read incoming messages. |
+
+Country, service and provider lists come from the live API. Availability and prices can change. Alternative API is not included.
+
+## Quickstart
+
+[Sign in to your SMSPVA account](https://smspva.com/signin.html) and open **Profile and ApiKey** from the account menu. Set the key as the **SMSPVA_API_KEY** environment variable before running a protected request. Keep it on your server and out of source control.
+
+The examples below read your balance and reference data; they do not create an order.
 
 ```js
 import { SMSPVA } from 'smspva-sdk';
@@ -105,13 +114,13 @@ The default request timeout is 30 seconds, covering fetch and body reading. Set 
 
 All generated request and response types are exported from the package. The complete method index is in `METHODS.md`. The generated source is committed. `npm run build` compiles it without needing the documentation source.
 
-## License
-
-MIT. See [LICENSE](LICENSE).
-
 ## Development
 
+To build from source and run the local checks:
+
 ```sh
+git clone https://github.com/SMSPVA/smspva-js.git
+cd smspva-js
 npm ci
 npm run build
 npm test
@@ -121,10 +130,12 @@ npm pack
 
 Tests use synthetic fixtures and local HTTP servers; they do not buy numbers or call the production API.
 
-## Documentation
+## Documentation and support
 
-[API documentation](https://docs.smspva.com)
+Read the [SMSPVA API documentation](https://docs.smspva.com/) for endpoint parameters, response codes and the activation, rental and email workflows. The [method index](https://github.com/SMSPVA/smspva-js/blob/main/METHODS.md) maps every SDK method to its API operation.
 
-The new documentation is being prepared in English, Spanish and Chinese. Localized links will be added when it is deployed.
+For account, billing or service questions, visit the [SMSPVA help center](https://smspva.com/help.html). Report SDK bugs through this repository's issues, without API keys or private message content.
 
-The SDK covers Activation V2, Rental and Private Email. Alternative API is not supported.
+## License
+
+MIT. See [LICENSE](https://github.com/SMSPVA/smspva-js/blob/main/LICENSE).
