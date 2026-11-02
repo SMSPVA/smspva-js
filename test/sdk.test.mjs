@@ -22,9 +22,23 @@ async function mock(t) {
   const client=new SMSPVA({apiKey:secret,activationBaseUrl:base,rentalBaseUrl:base,emailBaseUrl:base});
   return {state,received,client,base};
 }
-test('all 56 methods use the original wire paths, verbs, names, parameters and auth',async t=>{
+test('compact counts preserve country casing and empty results without server-added query parameters', async t => {
   const {state,received,client}=await mock(t);
-  assert.equal(cases.length,56);
+  state.body={statusCode:200,data:[]};
+  assert.deepEqual(await client.activation.getAllNumberCountsCompact(),state.body);
+  for(const country of ['ua','UA','UNKNOWN']) {
+    assert.deepEqual(await client.activation.getCountryNumberCountsCompact({country}),state.body);
+    const request=received.at(-1);
+    assert.equal(request.url.pathname,'/activation/countnumberscompact/'+country);
+    assert.equal(request.url.search,'');
+    assert.equal(request.headers.apikey,secret);
+  }
+  assert.equal(received.length,4,'one request per call');
+});
+
+test('all 58 methods use the original wire paths, verbs, names, parameters and auth',async t=>{
+  const {state,received,client}=await mock(t);
+  assert.equal(cases.length,58);
   for(const c of cases) {
     received.length=0;state.body=c.response;
     const result=await client[c.family][c.jsName](c.params);

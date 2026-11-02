@@ -126,6 +126,43 @@ export const operations: Record<string, Operation> = {
     "noStock": false,
     "stateful": false
   },
+  "activation.getAllNumberCountsCompact": {
+    "family": "activation",
+    "jsName": "getAllNumberCountsCompact",
+    "pyName": "get_all_number_counts_compact",
+    "slug": "countnumberscompact",
+    "path": "/activation/countnumberscompact",
+    "method": "GET",
+    "baseUrl": "https://api.smspva.com",
+    "auth": "required",
+    "params": [],
+    "pending": false,
+    "noStock": false,
+    "stateful": false
+  },
+  "activation.getCountryNumberCountsCompact": {
+    "family": "activation",
+    "jsName": "getCountryNumberCountsCompact",
+    "pyName": "get_country_number_counts_compact",
+    "slug": "country-countnumberscompact",
+    "path": "/activation/countnumberscompact/{country}",
+    "method": "GET",
+    "baseUrl": "https://api.smspva.com",
+    "auth": "required",
+    "params": [
+      {
+        "name": "country",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "pending": false,
+    "noStock": false,
+    "stateful": false
+  },
   "activation.getServicePrice": {
     "family": "activation",
     "jsName": "getServicePrice",

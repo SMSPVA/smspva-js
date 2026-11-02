@@ -1,5 +1,12 @@
 import { SMSPVA, isPending } from 'smspva-sdk';
 const client = new SMSPVA({ apiKey: 'example' });
+const compact = await client.activation.getAllNumberCountsCompact();
+const byCountry = await client.activation.getCountryNumberCountsCompact({ country: 'ua' });
+const count: number | undefined = compact.data[0]?.Services.opt20;
+const rating: unknown = byCountry.data[0]?.Rating;
+void count; void rating;
+// @ts-expect-error The country variant requires a country.
+await client.activation.getCountryNumberCountsCompact({});
 const balance = await client.activation.getBalance();
 void balance;
 await client.rental.getCountries();

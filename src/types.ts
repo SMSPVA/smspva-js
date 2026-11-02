@@ -20,6 +20,12 @@ export type ActivationGetAllNumberCountsParams = Record<string, never>;
 export type ActivationGetCountryNumberCountsResponse = { "statusCode"?: number; "data"?: Array<{ "operator"?: string; "country"?: string; "services"?: Array<{ "service"?: string; "total"?: number }> }> };
 export interface ActivationGetCountryNumberCountsParams { "country": string }
 
+export type ActivationGetAllNumberCountsCompactResponse = { "statusCode": number; "data": Array<{ "Operator": string; "Country": string; "Services": Record<string, number>; "Rating"?: unknown; "ServiceRatings"?: Record<string, unknown> }> };
+export type ActivationGetAllNumberCountsCompactParams = Record<string, never>;
+
+export type ActivationGetCountryNumberCountsCompactResponse = { "statusCode": number; "data": Array<{ "Operator": string; "Country": string; "Services": Record<string, number>; "Rating"?: unknown; "ServiceRatings"?: Record<string, unknown> }> };
+export interface ActivationGetCountryNumberCountsCompactParams { "country": string }
+
 export type ActivationGetServicePriceResponse = { "statusCode"?: number; "data"?: { "service"?: string; "serviceDescription"?: string; "country"?: string; "price"?: string; "priceByOperators"?: Record<string, string> } };
 export interface ActivationGetServicePriceParams { "country": string; "service": string; "voice"?: 0 | 1 | 2 }
 

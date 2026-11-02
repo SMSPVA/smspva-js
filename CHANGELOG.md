@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-alpha.3
+
+- Add all-country and country-specific compact Activation counts with optional provider ratings.
+- Preserve raw counts, rating fields, country casing, documented authentication and all existing method names.
+- Cover all 58 operations with local mock and wire-contract tests.
+
 ## 0.1.0-alpha.2
 
 - Improve installation and quickstart instructions, API coverage and contextual links to the SMSPVA service, documentation and support.
