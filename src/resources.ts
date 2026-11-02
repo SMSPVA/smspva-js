@@ -33,6 +33,14 @@ export class Activation {
     return this.transport.request("activation.getCountryNumberCounts", params, options) as Promise<T.ActivationGetCountryNumberCountsResponse>;
   }
 
+  getAllNumberCountsCompact(params: T.ActivationGetAllNumberCountsCompactParams = {}, options: RequestOptions = {}): Promise<T.ActivationGetAllNumberCountsCompactResponse> {
+    return this.transport.request("activation.getAllNumberCountsCompact", params, options) as Promise<T.ActivationGetAllNumberCountsCompactResponse>;
+  }
+
+  getCountryNumberCountsCompact(params: T.ActivationGetCountryNumberCountsCompactParams, options: RequestOptions = {}): Promise<T.ActivationGetCountryNumberCountsCompactResponse> {
+    return this.transport.request("activation.getCountryNumberCountsCompact", params, options) as Promise<T.ActivationGetCountryNumberCountsCompactResponse>;
+  }
+
   getServicePrice(params: T.ActivationGetServicePriceParams, options: RequestOptions = {}): Promise<T.ActivationGetServicePriceResponse> {
     return this.transport.request("activation.getServicePrice", params, options) as Promise<T.ActivationGetServicePriceResponse>;
   }

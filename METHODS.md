@@ -1,6 +1,6 @@
 # SDK method index
 
-All six packages cover these same 56 methods. Both Python clients use the Python names. PHP and Java use the JavaScript camelCase method names, with their own resource access syntax. Go capitalizes the first letter (for example, `GetBalance`); C# also appends `Async` (`GetBalanceAsync`). See each package README for request types and working usage. Parameters retain their API spelling.
+All six packages cover these same 58 methods. Both Python clients use the Python names. PHP and Java use the JavaScript camelCase method names, with their own resource access syntax. Go capitalizes the first letter (for example, `GetBalance`); C# also appends `Async` (`GetBalanceAsync`). See each package README for request types and working usage. Parameters retain their API spelling.
 
 ## activation
 
@@ -13,6 +13,8 @@ All six packages cover these same 56 methods. Both Python clients use the Python
 | `client.activation.get_message_type_settings` | `client.activation.getMessageTypeSettings` | `GET /activation/countryservicesettings` |
 | `client.activation.get_all_number_counts` | `client.activation.getAllNumberCounts` | `GET /activation/countnumbers` |
 | `client.activation.get_country_number_counts` | `client.activation.getCountryNumberCounts` | `GET /activation/countnumbers/{country}` |
+| `client.activation.get_all_number_counts_compact` | `client.activation.getAllNumberCountsCompact` | `GET /activation/countnumberscompact` |
+| `client.activation.get_country_number_counts_compact` | `client.activation.getCountryNumberCountsCompact` | `GET /activation/countnumberscompact/{country}` |
 | `client.activation.get_service_price` | `client.activation.getServicePrice` | `GET /activation/serviceprice/{country}/{service}` |
 | `client.activation.get_country_operator_prices` | `client.activation.getCountryOperatorPrices` | `GET /activation/serviceprice/{country}` |
 | `client.activation.get_service_prices` | `client.activation.getServicePrices` | `GET /activation/serviceprices/{service}` |
