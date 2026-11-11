@@ -65,6 +65,18 @@ export class Activation {
     return this.transport.request("activation.getNumberByOperator", params, options) as Promise<T.ActivationGetNumberByOperatorResponse>;
   }
 
+  repeatNumber(params: T.ActivationRepeatNumberParams, options: RequestOptions = {}): Promise<T.ActivationRepeatNumberResponse> {
+    return this.transport.request("activation.repeatNumber", params, options) as Promise<T.ActivationRepeatNumberResponse>;
+  }
+
+  getPhoneStatus(params: T.ActivationGetPhoneStatusParams, options: RequestOptions = {}): Promise<T.ActivationGetPhoneStatusResponse> {
+    return this.transport.request("activation.getPhoneStatus", params, options) as Promise<T.ActivationGetPhoneStatusResponse>;
+  }
+
+  startSms(params: T.ActivationStartSmsParams, options: RequestOptions = {}): Promise<T.ActivationStartSmsResponse> {
+    return this.transport.request("activation.startSms", params, options) as Promise<T.ActivationStartSmsResponse>;
+  }
+
   receiveSms(params: T.ActivationReceiveSmsParams, options: RequestOptions = {}): Promise<T.ActivationReceiveSmsResponse> {
     return this.transport.request("activation.receiveSms", params, options) as Promise<T.ActivationReceiveSmsResponse>;
   }

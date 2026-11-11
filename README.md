@@ -16,7 +16,7 @@ npm install smspva-sdk@0.1.0-alpha.2
 
 ## API coverage
 
-The SDK provides 58 methods across three APIs:
+The SDK provides 61 methods across three APIs:
 
 | API | Methods | Use it to |
 | --- | --- | --- |
@@ -152,3 +152,9 @@ const uaCounts = await client.activation.getCountryNumberCountsCompact({ country
 Both requests use GET and the account API key in the `apikey` header. Country codes are case-insensitive; an unknown country returns `data: []`. No extra query parameters are required. Results are cached by the API for 60 seconds, independently for all countries and for each country.
 
 The SDK preserves `Operator`, `Country`, `Services`, `Rating` and `ServiceRatings` exactly as returned, including negative counts and missing or invalid ratings. It does not insert computed rating fields. For non-`Donor*` operators, the effective rating is 1. For `Donor*` operators, use a service rating if it is an integer from 1 to 10, then a valid overall rating; otherwise the rating is undefined. Lower is better.
+
+## Receive another SMS on a previously used number
+
+Call the Activation methods in this order: `repeatNumber`, `getPhoneStatus`, `startSms`, `receiveSms`. Use a number previously paid for on the same service and carry the new order ID through the remaining calls. Request a new code in the target service after starting SMS reception.
+
+HTTP 202 with NUMBER_NOT_READY includes retryAfter in seconds. For PHONE_NOT_READY, wait five seconds. Wait 30 seconds between SMS checks while the order is active. Receiving a new paid SMS can incur a charge. If the number request has an uncertain outcome, inspect current orders before retrying.

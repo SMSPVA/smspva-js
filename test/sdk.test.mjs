@@ -36,9 +36,28 @@ test('compact counts preserve country casing and empty results without server-ad
   assert.equal(received.length,4,'one request per call');
 });
 
-test('all 58 methods use the original wire paths, verbs, names, parameters and auth',async t=>{
+test('number reuse preserves pending results, the retry delay and the order expiry', async t => {
+  const {state, received, client} = await mock(t);
+  const number = {number: '01234', service: 'opt164'};
+  state.http = 202;
+  state.body = {statusCode: 202, error: {type: 'NUMBER_NOT_READY', description: 'Wait'}, retryAfter: 17};
+  assert.deepEqual(await client.activation.repeatNumber(number), state.body);
+  assert.equal(received.length, 1, 'the SDK must not retry');
+  await assert.rejects(client.activation.getPhoneStatus({orderid: 123}), ApiError);
+  state.body = {statusCode: 202, error: {type: 'PHONE_NOT_READY', description: 'Wait'}};
+  assert.deepEqual(await client.activation.getPhoneStatus({orderid: 123}), state.body);
+  state.http = 200;
+  state.body = {statusCode: 200, data: {orderId: 123, orderExpireIn: null}};
+  assert.deepEqual(await client.activation.startSms({orderid: 123}), state.body);
+  for (const invalid of ['1234', '1234567890123456', '+12345', '01234\n']) {
+    await assert.rejects(client.activation.repeatNumber({...number, number: invalid}), ValidationError);
+  }
+  assert.equal(received.length, 4);
+});
+
+test('all 61 methods use the original wire paths, verbs, names, parameters and auth',async t=>{
   const {state,received,client}=await mock(t);
-  assert.equal(cases.length,58);
+  assert.equal(cases.length,61);
   for(const c of cases) {
     received.length=0;state.body=c.response;
     const result=await client[c.family][c.jsName](c.params);

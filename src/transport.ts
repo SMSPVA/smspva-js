@@ -4,7 +4,7 @@ import { ApiError, ProtocolError, RequestTimeoutError, TransportError, Validatio
 export interface Schema { type?: string; enum?: unknown[]; minimum?: number; maximum?: number; minLength?: number; maxLength?: number; pattern?: string; [key: string]: unknown }
 export interface Operation {
   family: Family; jsName: string; pyName: string; slug: string; path: string; method: string; baseUrl: string;
-  auth: 'required' | 'optional' | 'none'; action?: string; stateful: boolean; pending: boolean; noStock: boolean;
+  auth: 'required' | 'optional' | 'none'; action?: string; stateful: boolean; pending: boolean; pendingType?: string; noStock: boolean;
   params: Array<{ name: string; in: string; required: boolean; omitEmpty?: boolean; schema: Schema }>;
 }
 export interface ClientOptions {
@@ -98,7 +98,7 @@ export class Transport {
     const code=typeof error.type==='string'?error.type:typeof result.errorid==='number'?result.errorid:typeof status==='number'?status:response.status;
     if (!response.ok) throw new ApiError(op.family,key,response.status,code,result);
     if (typeof status!=='number' || !Number.isInteger(status))throw new ProtocolError(op.family,key,response.status);
-    if (op.pending && response.status===202 && status===202 && error.type==='SMS_NOT_YET_RECEIVED') return result;
+    if (op.pending && response.status===202 && status===202 && error.type===(op.pendingType ?? 'SMS_NOT_YET_RECEIVED')) return result;
     if (op.noStock && response.status===200 && status===2) return result;
     if (op.family==='activation' ? (status!==200 || !!result.error) : status!==1) throw new ApiError(op.family,key,response.status,code,result);
     return result;

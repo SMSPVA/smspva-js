@@ -44,6 +44,15 @@ export interface ActivationGetNumberParams { "country": string; "service": strin
 export type ActivationGetNumberByOperatorResponse = { "statusCode"?: number; "data"?: { "orderId"?: number; "phoneNumber"?: number; "countryCode"?: string; "orderExpireIn"?: number } };
 export interface ActivationGetNumberByOperatorParams { "country": string; "service": string; "operator": string; "voice"?: 0 | 1 | 2 }
 
+export type ActivationRepeatNumberResponse = { "statusCode": 200; "data": { "orderId": number; "phoneNumber": string; "countryCode": string; "orderExpireIn": number | null; "price": number } } | { "statusCode": 202; "error": { "type": "NUMBER_NOT_READY"; "description": string }; "retryAfter": number };
+export interface ActivationRepeatNumberParams { "number": string; "service": string }
+
+export type ActivationGetPhoneStatusResponse = { "statusCode": 200; "data": { "orderId": number; "ready": boolean } } | { "statusCode": 202; "error": { "type": "PHONE_NOT_READY"; "description": string } };
+export interface ActivationGetPhoneStatusParams { "orderid": number }
+
+export type ActivationStartSmsResponse = { "statusCode": 200; "data": { "orderId": number; "orderExpireIn": number | null } };
+export interface ActivationStartSmsParams { "orderid": number }
+
 export type ActivationReceiveSmsResponse = { "statusCode"?: number; "data"?: { "sms"?: { "code"?: string; "fullText"?: string }; "orderId"?: number; "orderExpireIn"?: number } } | ActivationPending;
 export interface ActivationReceiveSmsParams { "partnerkey"?: string; "orderid": number }
 

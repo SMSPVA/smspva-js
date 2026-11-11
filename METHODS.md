@@ -1,6 +1,6 @@
 # SDK method index
 
-All six packages cover these same 58 methods. Both Python clients use the Python names. PHP and Java use the JavaScript camelCase method names, with their own resource access syntax. Go capitalizes the first letter (for example, `GetBalance`); C# also appends `Async` (`GetBalanceAsync`). See each package README for request types and working usage. Parameters retain their API spelling.
+All six packages cover these same 61 methods. Both Python clients use the Python names. PHP and Java use the JavaScript camelCase method names, with their own resource access syntax. Go capitalizes the first letter (for example, `GetBalance`); C# also appends `Async` (`GetBalanceAsync`). See each package README for request types and working usage. Parameters retain their API spelling.
 
 ## activation
 
@@ -21,6 +21,9 @@ All six packages cover these same 58 methods. Both Python clients use the Python
 | `client.activation.get_all_service_prices` | `client.activation.getAllServicePrices` | `GET /activation/servicesprices` |
 | `client.activation.get_number` | `client.activation.getNumber` | `GET /activation/number/{country}/{service}` |
 | `client.activation.get_number_by_operator` | `client.activation.getNumberByOperator` | `GET /activation/number/{country}/{service}/{operator}` |
+| `client.activation.repeat_number` | `client.activation.repeatNumber` | `POST /activation/repeatnumber/{number}/{service}` |
+| `client.activation.get_phone_status` | `client.activation.getPhoneStatus` | `GET /activation/statusphone/{orderid}` |
+| `client.activation.start_sms` | `client.activation.startSms` | `PUT /activation/startsms/{orderid}` |
 | `client.activation.receive_sms` | `client.activation.receiveSms` | `GET /activation/sms/{orderid}` |
 | `client.activation.get_orders` | `client.activation.getOrders` | `GET /activation/orders` |
 | `client.activation.get_number_status` | `client.activation.getNumberStatus` | `GET /activation/numberstatus/{number}/{service}` |
