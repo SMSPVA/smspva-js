@@ -410,6 +410,89 @@ export const operations: Record<string, Operation> = {
     "noStock": false,
     "stateful": true
   },
+  "activation.repeatNumber": {
+    "family": "activation",
+    "jsName": "repeatNumber",
+    "pyName": "repeat_number",
+    "slug": "repeat-number",
+    "path": "/activation/repeatnumber/{number}/{service}",
+    "method": "POST",
+    "baseUrl": "https://api.smspva.com",
+    "auth": "required",
+    "params": [
+      {
+        "name": "number",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[0-9]{5,15}$",
+          "minLength": 5,
+          "maxLength": 15
+        }
+      },
+      {
+        "name": "service",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    ],
+    "pending": true,
+    "pendingType": "NUMBER_NOT_READY",
+    "noStock": false,
+    "stateful": true
+  },
+  "activation.getPhoneStatus": {
+    "family": "activation",
+    "jsName": "getPhoneStatus",
+    "pyName": "get_phone_status",
+    "slug": "phone-readiness",
+    "path": "/activation/statusphone/{orderid}",
+    "method": "GET",
+    "baseUrl": "https://api.smspva.com",
+    "auth": "required",
+    "params": [
+      {
+        "name": "orderid",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+    "pending": true,
+    "pendingType": "PHONE_NOT_READY",
+    "noStock": false,
+    "stateful": false
+  },
+  "activation.startSms": {
+    "family": "activation",
+    "jsName": "startSms",
+    "pyName": "start_sms",
+    "slug": "start-sms",
+    "path": "/activation/startsms/{orderid}",
+    "method": "PUT",
+    "baseUrl": "https://api.smspva.com",
+    "auth": "required",
+    "params": [
+      {
+        "name": "orderid",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        }
+      }
+    ],
+    "pending": false,
+    "noStock": false,
+    "stateful": true
+  },
   "activation.receiveSms": {
     "family": "activation",
     "jsName": "receiveSms",
